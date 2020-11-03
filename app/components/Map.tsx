@@ -38,9 +38,10 @@ https://github.com/klokantech/mapbox-gl-js-offline-example
 
 // STYLE FILE PREPROCESSING
 const mapboxStyle = require('assets/map-style.json');
+
 mapboxStyle.sources.jsonsource = {
   type: 'geojson',
-  data: require('assets/map-sources/africa.json'),
+  data: require('assets/map-sources/africa.json')
 };
 
 // COMPONENT RENDERING
