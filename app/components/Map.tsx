@@ -57,11 +57,10 @@ const mapboxStyle = require('assets/map-style.json');
 
 delete mapboxStyle.sources.mapbox;
 changeSources(mapboxStyle);
-const gabonMap = require('assets/map-sources/gabon_parks_map.json');
 
 mapboxStyle.sources.jsonsource = {
   type: 'geojson',
-  data: gabonMap
+  data: require('assets/map-sources/africa.json'),
 };
 mapboxStyle.glyphs = 'assets/map-font/{fontstack}/{range}.pbf';
 
