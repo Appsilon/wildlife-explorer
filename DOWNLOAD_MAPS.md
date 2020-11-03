@@ -1,3 +1,22 @@
+### Downloading OpenStreetMap data
+
+Use [Overpass Turbo](http://overpass-turbo.eu/), an interface for the OpenStreetMap database.
+You can run queries using [Overpass QL](https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL)
+and export results in `.geojson` format.
+
+The following query was used to create `map-sources/africa.json`:
+```
+area["ISO3166-1"~"GA|NG|CM|CG|CD|GQ"]->.a;
+(
+  nwr(area.a)[boundary=administrative][admin_level=2];
+  nwr(area.a)[boundary=national_park];
+  nwr(area.a)[boundary=protected_area];
+);
+out geom;
+```
+
+### DEPRECATED: old instructions
+
 Install requirements:
 
 ```
@@ -16,7 +35,7 @@ https://help.openstreetmap.org/questions/19063/get-city-nodes-within-a-country-u
 https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_API_by_Example#The_Taginfo_Example
 https://wiki.openstreetmap.org/wiki/Node
 
-# Overpass - Query 1
+#### Overpass - Query 1
 
 This query gets all details that we care about from a selected bounding box.
 
@@ -50,7 +69,7 @@ Approximate bboxes for reference
 9.3205,-2.4794,9.9179,-1.8756    // Loango
 ```
 
-# Overpass - Query 2
+#### Overpass - Query 2
 
 This query gets just the basic administrative borders, so can be used on entire country.
 
