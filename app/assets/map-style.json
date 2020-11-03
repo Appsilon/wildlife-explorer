@@ -6,15 +6,8 @@
         "mapbox:autocomposite": true,
         "mapbox:type": "template"
     },
-    "sources":
-    {
-        "mapbox":
-        {
-            "url": "mapbox://mapbox.mapbox-streets-v7",
-            "type": "vector"
-        }
-    },
-    "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
+    "sources": {},
+    "glyphs": "assets/map-font/{fontstack}/{range}.pbf",
     "layers": [
     {
         "id": "background",
@@ -537,10 +530,7 @@
         {
             "symbol-placement": "line",
             "text-field": "{name}",
-            "text-font": [
-                "Open Sans Semibold",
-                "Arial Unicode MS Bold"
-            ],
+            "text-font": ["Open Sans Semibold"],
             "text-letter-spacing": 0.1,
             "text-offset": [0, 0.5],
             "text-size":
@@ -580,10 +570,7 @@
         {
             "symbol-placement": "line",
             "text-field": "{name}",
-            "text-font": [
-                "Open Sans Semibold",
-                "Arial Unicode MS Bold"
-            ],
+            "text-font": ["Open Sans Semibold"],
             "text-transform": "uppercase",
             "text-letter-spacing": 0.1,
             "text-size":
@@ -635,10 +622,7 @@
         {
             "symbol-placement": "point",
             "text-field": "{name}",
-            "text-font": [
-                "Open Sans Semibold",
-                "Arial Unicode MS Bold"
-            ],
+            "text-font": ["Open Sans Semibold"],
             "text-max-width": 6,
             "text-size":
             {
@@ -682,10 +666,7 @@
         {
             "symbol-placement": "point",
             "text-field": "{name}",
-            "text-font": [
-                "Open Sans Semibold",
-                "Arial Unicode MS Bold"
-            ],
+            "text-font": ["Open Sans Semibold"],
             "text-max-width": 6,
             "text-size":
             {
@@ -751,10 +732,7 @@
         {
             "symbol-placement": "point",
             "text-field": "{name}",
-            "text-font": [
-                "Open Sans Semibold",
-                "Arial Unicode MS Bold"
-            ],
+            "text-font": ["Open Sans Semibold"],
             "text-max-width": 14,
             "text-size":
             {
