@@ -73,6 +73,7 @@
         "byStation": "By station",
         "byCamera": "By camera ID",
         "byCheck": "By check",
+        "certaintyRange": "Certainty range",
         "plotTitle": "Image count over time ({{windowLengthInDays}}-day intervals)",
         "inspect": {
           "station": "Station {{id}}",
@@ -163,6 +164,7 @@
         "byStation": "Par station",
         "byCamera": "Par ID d'appareil photo",
         "byCheck": "Par check",
+        "certaintyRange": "TODO",
         "plotTitle": "Comptage des animaux dans le temps ({{windowLengthInDays}}-intervalles de jours)",
         "inspect": {
           "station": "Station {{id}}",

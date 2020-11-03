@@ -1,5 +1,5 @@
-import * as React from 'react';
-
+import { NumberRange, RangeSlider } from '@blueprintjs/core';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Select from 'react-select';
 
@@ -21,6 +21,37 @@ const orderByName = (a: entry, b: entry) => {
   if (nameA > nameB) return 1;
   return 0;
 };
+
+type CertaintyFilterProps = {
+  updateFilters: Function;
+};
+
+function CertaintyFilter({ updateFilters }: CertaintyFilterProps) {
+  const { t } = useTranslation();
+  const [range, setRange] = useState<NumberRange>([0, 100]);
+
+  const handleChange = (newRange: NumberRange) => {
+    setRange(newRange);
+    // TODO: Debounce filter updates:
+    // https://stackoverflow.com/questions/23123138/perform-debounce-in-react-js
+    const [low, high] = newRange;
+    updateFilters({ certaintyRange: [low / 100, high / 100] });
+  };
+
+  return (
+    <>
+      <h4 style={{ marginBottom: '5px' }}>{t('explore.certaintyRange')}</h4>
+      <RangeSlider
+        min={0}
+        max={100}
+        labelStepSize={10}
+        labelRenderer={value => `${value}%`}
+        value={range}
+        onChange={handleChange}
+      />
+    </>
+  );
+}
 
 export default function ExplorerFilter(props: Props) {
   const { t } = useTranslation();
@@ -67,50 +98,52 @@ export default function ExplorerFilter(props: Props) {
   };
 
   return (
-    <div
-      className="filter-wrapper"
-      style={{
-        width: '100%',
-        paddingBottom: '10px',
-        display: 'inline-flex'
-      }}
-    >
-      <div style={{ width: '50%', paddingRight: '5px' }}>
-        <h4 style={{ marginBottom: '5px' }}>{t('explore.byAnimal')}</h4>
-        <Select
-          onChange={setAnimals}
-          closeMenuOnSelect={false}
-          options={animals}
-          isMulti
-        />
+    <div style={{ paddingBottom: '10px' }}>
+      <div
+        className="filter-wrapper"
+        style={{
+          width: '100%',
+          display: 'inline-flex'
+        }}
+      >
+        <div style={{ width: '50%', paddingRight: '5px' }}>
+          <h4 style={{ marginBottom: '5px' }}>{t('explore.byAnimal')}</h4>
+          <Select
+            onChange={setAnimals}
+            closeMenuOnSelect={false}
+            options={animals}
+            isMulti
+          />
+        </div>
+        <div style={{ width: '50%', padding: '0 5px' }}>
+          <h4 style={{ marginBottom: '5px' }}>{t('explore.byStation')}</h4>
+          <Select
+            onChange={setStations}
+            closeMenuOnSelect={false}
+            options={stations}
+            isMulti
+          />
+        </div>
+        <div style={{ width: '50%', padding: '0 5px' }}>
+          <h4 style={{ marginBottom: '5px' }}>{t('explore.byCamera')}</h4>
+          <Select
+            onChange={setCameras}
+            closeMenuOnSelect={false}
+            options={cameras}
+            isMulti
+          />
+        </div>
+        <div style={{ width: '50%', paddingLeft: '5px' }}>
+          <h4 style={{ marginBottom: '5px' }}>{t('explore.byCheck')}</h4>
+          <Select
+            onChange={setChecks}
+            closeMenuOnSelect={false}
+            options={checks}
+            isMulti
+          />
+        </div>
       </div>
-      <div style={{ width: '50%', padding: '0 5px' }}>
-        <h4 style={{ marginBottom: '5px' }}>{t('explore.byStation')}</h4>
-        <Select
-          onChange={setStations}
-          closeMenuOnSelect={false}
-          options={stations}
-          isMulti
-        />
-      </div>
-      <div style={{ width: '50%', padding: '0 5px' }}>
-        <h4 style={{ marginBottom: '5px' }}>{t('explore.byCamera')}</h4>
-        <Select
-          onChange={setCameras}
-          closeMenuOnSelect={false}
-          options={cameras}
-          isMulti
-        />
-      </div>
-      <div style={{ width: '50%', paddingLeft: '5px' }}>
-        <h4 style={{ marginBottom: '5px' }}>{t('explore.byCheck')}</h4>
-        <Select
-          onChange={setChecks}
-          closeMenuOnSelect={false}
-          options={checks}
-          isMulti
-        />
-      </div>
+      <CertaintyFilter updateFilters={updateFilters} />
     </div>
   );
 }

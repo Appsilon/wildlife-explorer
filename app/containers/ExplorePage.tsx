@@ -9,7 +9,8 @@ import {
   Tabs,
   H1,
   Intent,
-  Callout
+  Callout,
+  NumberRange
 } from '@blueprintjs/core';
 import Map from '../components/Map';
 import AnimalsPlot from '../components/AnimalsPlot';
@@ -23,6 +24,7 @@ type Filters = {
   activeCameras: Entry[];
   activeStations: Entry[];
   activeChecks: Entry[];
+  certaintyRange: NumberRange;
 };
 
 type Entry = {
@@ -73,6 +75,10 @@ function chooseFile(
     });
 }
 
+function inRange(value: number, [low, high]: NumberRange) {
+  return low <= value && value <= high;
+}
+
 export default function ExplorePage() {
   const { t } = useTranslation();
   const [filePath, setFilePath] = useState<string>();
@@ -80,7 +86,8 @@ export default function ExplorePage() {
     activeAnimals: [],
     activeCameras: [],
     activeStations: [],
-    activeChecks: []
+    activeChecks: [],
+    certaintyRange: [0, 1]
   });
   const [data, setData] = useState<undefined | ObservationsData>();
   const handleFilters = (val: string[]) => {
@@ -101,7 +108,8 @@ export default function ExplorePage() {
           filterCondition(entry.pred_1, filters.activeAnimals) &&
           filterCondition(entry.camera, filters.activeCameras) &&
           filterCondition(entry.station, filters.activeStations) &&
-          filterCondition(entry.check, filters.activeChecks)
+          filterCondition(entry.check, filters.activeChecks) &&
+          inRange(entry.score_1, filters.certaintyRange)
       );
     }
     return { observations: filtered };
