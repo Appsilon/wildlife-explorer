@@ -40,7 +40,7 @@ For example: `yarn cross-env DEBUG_PROD=true yarn package`.
 ### Packaging for production
 
 `yarn package` packages the app for install. We run it with GitHub actions and store artifacts, so you can simply download an artifact from there.
-Model packaging: go to `models_runner` and follow the README there (both for Windows and Linux).
+Model packaging: go to `models/runner/` and follow the README there (both for Windows and Linux).
 
 ## License
 

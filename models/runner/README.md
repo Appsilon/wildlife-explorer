@@ -38,14 +38,16 @@ Compress-Archive -Path .\models\runner_win\, .\models\gabon\, .\models\serengeti
 
 ## Building on Linux
 
-1. Create a virtual environment (`python3 -m venv venv`)
-2. Install requirements from `requirements.txt` (`source venv/bin/activate; pip install -r requirements.txt`).
-3. Run `release_model_linux_x86_64.sh`
-4. Run it for example with: `./main --model=../../serengeti/trained_model.pkl --input_folder=../../serengeti/images_fun_examples --output=output.csv --overwrite`
+1. Make sure the python version you're using is 3.6. You can install pyenv and run `pyenv install 3.6.12` and `pyenv local 3.6.12` to switch to it.
+2. Create a virtual environment (`python3 -m venv venv`).
+3. Install requirements from `requirements.txt` (`source venv/bin/activate; pip install -r requirements.txt`).
+4. Run `release_model_linux_x86_64.sh`
+5. Run it for example with: `./main --model=../../serengeti/trained_model.pkl --input_folder=../../serengeti/images_fun_examples --output=output.csv --overwrite`
    (Warning: this needs to be run from `main`'s directory for Pytorch to locate the necessary source files.)
 
 ## Running in dev mode directly
 
-1. Create a virtual environment (`python3 -m venv venv`)
-2. Install requirements from `requirements.txt` (`source venv/bin/activate; pip install -r requirements.txt`).
-3. Run it for example with: `python3 main.py --model=../serengeti/trained_model.pkl --input_folder=../serengeti/images_fun_examples --output=output.csv --overwrite`
+1.  Make sure the python version you're using is 3.6. You can install pyenv and run `pyenv install 3.6.12` and `pyenv local 3.6.12` to switch to it.
+2. Create a virtual environment (`python3 -m venv venv`).
+3. Install requirements from `requirements.txt` (`source venv/bin/activate; pip install -r requirements.txt`).
+4. Run it for example with: `python3 main.py --model=../serengeti/trained_model.pkl --input_folder=../serengeti/images_fun_examples --output=output.csv --overwrite`

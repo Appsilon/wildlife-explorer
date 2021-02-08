@@ -13,6 +13,11 @@ export default function App(props: Props) {
   const { children } = props;
   const { t, i18n } = useTranslation();
 
+  const changeLanguage = (language: string) => {
+    window.localStorage.setItem('language', language);
+    i18n.changeLanguage(language);
+  };
+
   return (
     <>
       <Navbar className="bp3-dark">
@@ -40,8 +45,8 @@ export default function App(props: Props) {
           <Popover>
             <Button className="bp3-minimal" icon="globe" />
             <Menu>
-              <MenuItem text="English" onClick={() => i18n.changeLanguage('en')} />
-              <MenuItem text="Français" onClick={() => i18n.changeLanguage('fr')} />
+              <MenuItem text="English" onClick={() => changeLanguage('en')} />
+              <MenuItem text="Français" onClick={() => changeLanguage('fr')} />
             </Menu>
           </Popover>
         </Navbar.Group>

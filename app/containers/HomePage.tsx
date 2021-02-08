@@ -27,6 +27,7 @@ export default function HomePage() {
           style={{
             display: 'flex',
             justifyContent: 'space-evenly',
+            flexWrap: 'wrap',
             marginTop: 30
           }}
         >
